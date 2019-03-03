@@ -39,3 +39,7 @@ Configuration:
 
     # Delete DB
     make db-delete
+
+## AWS instances info
+
+    make info

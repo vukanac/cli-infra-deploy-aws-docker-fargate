@@ -4,6 +4,13 @@ DB_USER=<USER>
 DB_PASS=<PASS>
 DB_NAME=aws_lamp_tutorial
 
+.PHONY: status info
+status: info
+info: db-list
+	aws ec2 describe-instances
+	aws s3 ls
+
+
 .PHONY: db-create
 db-create:
 	aws rds create-db-instance \
@@ -20,6 +27,10 @@ db-create:
 	# "Address": "mysql-tutorial-db.HASH.us-east-1.rds.amazonaws.com",
 
 DB_ADDRESS=mysql-tutorial-db.HASH.us-east-1.rds.amazonaws.com
+
+.PHONY: db-list
+db-list:
+	aws rds describe-db-instances
 
 .PHONY: db-info
 db-info:
